@@ -3094,7 +3094,17 @@
 		.wrapper.style3 {
 			background-color: #000;
 			color: #bfbfbf;
-			background-image: url(../../images/bg.jpg);
+			background-image: url(../../images/para2.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+			position: relative;
+		}
+
+		.wrapper.style5 {
+			background-color: #000;
+			color: #bfbfbf;
+			background-image: url(../../images/para2.jpg);
 			background-size: cover;
 			background-attachment: fixed;
 			background-position: center;
@@ -3345,7 +3355,7 @@
 					height: 1px;
 					background-color: rgba(255, 255, 255, 0.5);
 				}
-
+/*
 			.wrapper.style3:before {
 				-moz-transition: opacity 3s ease;
 				-webkit-transition: opacity 3s ease;
@@ -3357,7 +3367,7 @@
 				transition-delay: 1.25s;
 				content: '';
 				display: block;
-				background-color: rgba(0, 0, 0, 0.95);
+				background-color: rgba(0, 0, 0, 0.5);
 				height: 100%;
 				left: 0;
 				opacity: 0.75;
@@ -3366,6 +3376,28 @@
 				width: 100%;
 				z-index: 1;
 			}
+
+			.wrapper.style5:before {
+				-moz-transition: opacity 3s ease;
+				-webkit-transition: opacity 3s ease;
+				-ms-transition: opacity 3s ease;
+				transition: opacity 3s ease;
+				-moz-transition-delay: 1.25s;
+				-webkit-transition-delay: 1.25s;
+				-ms-transition-delay: 1.25s;
+				transition-delay: 1.25s;
+				content: '';
+				display: block;
+				background-color: rgba(0, 0, 0, 0.5);
+				height: 100%;
+				left: 0;
+				opacity: 0.75;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 1;
+			}
+*/
 
 		@media screen and (max-width: 1280px) {
 
@@ -4305,3 +4337,19 @@
 			}
 
 		}
+
+
+
+
+/*============================================================
+	Google Maps
+==============================================================*/
+
+#google-map {
+    padding: 0;
+}
+
+#map-canvas {
+    width: 100%;
+    height: 600px;
+}

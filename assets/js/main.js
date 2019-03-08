@@ -19,6 +19,232 @@ var settings = {
 
 };
 
+//GET CURRENT LOCATION
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  return position.coords.latitude + ","+position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error occurred.");
+      break;
+  }
+}
+
+
+
+/* ==========  START GOOGLE MAP ========== */
+
+// When the window has finished loading create our google map below
+google.maps.event.addDomListener(window, 'load', init);
+
+function init() {
+    // Basic options for a simple Google Map
+    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+
+	    var myLatLng = new google.maps.LatLng(25.4299, 81.7712);
+
+	    var mapOptions = {
+	        zoom: 17,
+	        center: myLatLng,
+	        disableDefaultUI: false,
+	        scrollwheel: true,
+	        navigationControl: true,
+	        mapTypeControl: false,
+	        scaleControl: true,
+	        draggable: true,
+
+        // How you would like to style the map. 
+        // This is where you would paste any style found on Snazzy Maps.
+        styles: [{
+            featureType: 'water',
+            stylers: [{
+                color: '#46bcec'
+            }, {
+                visibility: 'on'
+            }]
+        }, {
+            featureType: 'landscape',
+            stylers: [{
+                color: '#f2f2f2'
+            }]
+        }, {
+            featureType: 'road',
+            stylers: [{
+                saturation: -100
+            }, {
+                lightness: 45
+            }]
+        }, {
+            featureType: 'road.highway',
+            stylers: [{
+                visibility: 'simplified'
+            }]
+        }, {
+            featureType: 'road.arterial',
+            elementType: 'labels.icon',
+            stylers: [{
+                visibility: 'off'
+            }]
+        }, {
+            featureType: 'administrative',
+            elementType: 'labels.text.fill',
+            stylers: [{
+                color: '#444444'
+            }]
+        }, {
+            featureType: 'transit',
+            stylers: [{
+                visibility: 'off'
+            }]
+        }, {
+            featureType: 'poi',
+            stylers: [{
+                visibility: 'off'
+            }]
+        }]
+    };
+
+    // Get the HTML DOM element that will contain your map 
+    // We are using a div with id="map" seen below in the <body>
+    var mapElement = document.getElementById('map-canvas');
+
+    // Create the Google Map using our element and options defined above
+    var map = new google.maps.Map(mapElement, mapOptions);
+
+    // Let's also add a marker while we're at it
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(25.4299, 81.7712),
+        map: map,
+		icon: 'images/map-marker.png',
+    });
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.430130,81.772047),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.431846,81.770164),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.432193,81.769874),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.432596,81.770173),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.432268,81.770978),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.431653,81.770727),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.431796,81.771326),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.431400,81.771763),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.430117,81.772560),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.429722,81.773557),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.429807,81.773167),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.429937,81.774428),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.428718,81.773115),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(25.428924,81.772565),
+        map: map,
+        icon: 'images/trash.png',
+    });
+
+
+
+}
+
+
+
 (function($) {
 
 	skel.breakpoints({

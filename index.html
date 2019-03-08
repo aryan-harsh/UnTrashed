@@ -3,15 +3,20 @@
 <html>
 	<head>
 		<title>UnTrashed</title>
+
+        
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="shortcut icon" href="images/trash.png">
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">UnTrashed <span>a waste management project</span></a></div>
+				<div class="logo"><a href="index.html">
+					<img src="images/trash.png">
+					UnTrashed <span>a waste management project</span></a></div>
 				<a href="#menu">Menu</a>
 			</header>
 
@@ -119,6 +124,23 @@
 				</div>
 			</section>
 
+<!-- Two -->
+			<section id="premap" class="wrapper style5">
+				<div class="inner">
+					<header class="align-center">
+						<p>Zoom in and out to adjust  </p>
+						<h2 style="color: #ffffff; font-size: 3.0rem;">DUSTBINS NEAR YOU</h2>
+					</header>
+				</div>
+			</section>
+
+
+		<!-- Map -->
+			<section id="google-map" >
+				<div id="map-canvas" style="position: relative; overflow: hidden; visibility: visible;" ></div>
+			</section>
+		
+
 		<!-- Two -->
 			<section id="two" class="wrapper style3">
 				<div class="inner">
@@ -181,8 +203,9 @@
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
+			<script src="https://maps.google.com/maps/api/js?key=AIzaSyB87ZAO0sTbFpvGA0dN7ANXF3iKPFUP2Zw"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			
 	</body>
 </html>
