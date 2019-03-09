@@ -203,6 +203,26 @@
 			</footer>
 
 		<!-- Scripts -->
+
+			<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD61U9qj5KGNMu-uNIl2CvzK9tL7IcXJHM",
+    authDomain: "ishaan-ccb0d.firebaseapp.com",
+    databaseURL: "https://ishaan-ccb0d.firebaseio.com",
+    projectId: "ishaan-ccb0d",
+    storageBucket: "ishaan-ccb0d.appspot.com",
+    messagingSenderId: "957251921256"
+  };
+  firebase.initializeApp(config);
+</script>
+
+			var fireb=firebase.database().ref().child("Dustbin1").child("Db0").child("Weight");
+			fireb.on('value',function(datasnapshot){
+	    		alert(datasnapshot.val());
+			});
+
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
