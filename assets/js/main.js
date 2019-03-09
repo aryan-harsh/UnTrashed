@@ -25,6 +25,23 @@ var settings = {
 let lat=null;
 let lon=null;
 
+//DISTANCE BETWEEN 2 POINTS ON MAP
+function distance(lat1, lon1, lat2, lon2) {
+        var radlat1 = Math.PI * lat1/180
+        var radlat2 = Math.PI * lat2/180
+        var radlon1 = Math.PI * lon1/180
+        var radlon2 = Math.PI * lon2/180
+        var theta = lon1-lon2
+        var radtheta = Math.PI * theta/180
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist)
+        dist = dist * 180/Math.PI
+        dist = dist * 60 * 1.1515
+        dist = dist * 1.609344 
+        return dist
+}
+
+
 /* ==========  START GOOGLE MAP ========== */
 
 // When the window has finished loading create our google map below
@@ -52,12 +69,15 @@ function init(){
 
 }
 
+
+    	
+
 function init_map() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 
-    
-    	
+lat=25.432057;
+    	lon=81.770422;
 
   if(lat && lon){
 	    		var myLatLng = new google.maps.LatLng(lat, lon);
@@ -124,6 +144,8 @@ function init_map() {
         }]
     };
 
+
+
     // Get the HTML DOM element that will contain your map 
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map-canvas');
@@ -133,265 +155,161 @@ function init_map() {
 
     // Let's also add a marker while we're at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(25.426338899999998,81.7732228),
+        position: new google.maps.LatLng(lat,lon),
         map: map,
 		icon: 'images/map-marker.png',
     });
 
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430130,81.772047),
+var latit=[25.431846,25.432193,25.432596,25.432268,25.431653,25.431796,25.431400,25.430117,25.429722,25.429807,25.429937,25.428718,25.428924,25.430412,
+
+25.430951,
+
+25.430613,
+
+25.430726,
+
+25.429504,
+
+25.429447,
+
+25.429419,
+
+25.429282,
+
+25.428916,
+
+25.428871,
+
+25.428699,
+
+25.428780,
+
+25.428697,
+
+25.428551,
+
+25.428273,
+
+25.428386,
+
+25.428059,
+
+25.427874,
+
+25.427786,
+
+25.428122,
+
+25.428701,
+
+25.428703,
+
+25.430130];
+
+var longit=[
+
+81.770164
+
+
+,81.769874
+
+
+,81.770173
+
+
+,81.770978
+
+
+,81.770727
+
+
+,81.771326
+
+
+,81.771763
+
+
+,81.772560
+
+
+,81.773557
+
+
+,81.773167
+
+
+
+,81.774428
+
+
+
+,81.773115
+
+
+,81.772565
+
+,81.770256
+
+,81.769699
+
+,81.769487
+
+,81.768729
+
+,81.770080
+
+,81.770758
+
+,81.771276
+
+,81.771860
+
+,81.772331
+
+,81.772440
+
+,81.772792
+
+,81.772628
+
+,81.772997
+
+,81.773214
+
+,81.773206
+
+,81.773403
+
+,81.773373
+
+,81.773573
+
+,81.774127
+
+,81.774371
+
+,81.773718
+
+,81.774308
+
+,81.772047
+];
+var j;
+for(j=0;j<36;j++)
+{
+	var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(latit[j],longit[j]),
         map: map,
         icon: 'images/trash.png',
     });
 
+    var distanc = distance(lat,lon, latit[j],longit[j]);
+	//round to 3 decimal places
+	console.log(Math.round(distanc*1000));  
 
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.431846,81.770164),
-        map: map,
-        icon: 'images/trash.png',
-    });
+}
 
 
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.432193,81.769874),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.432596,81.770173),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.432268,81.770978),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.431653,81.770727),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.431796,81.771326),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.431400,81.771763),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430117,81.772560),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429722,81.773557),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429807,81.773167),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429937,81.774428),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428718,81.773115),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428924,81.772565),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430412,81.770256),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430951,81.769699),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430613,81.769487),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.430726,81.768729),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429504,81.770080),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429447,81.770758),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429419,81.771276),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.429282,81.771860),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428916,81.772331),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428871,81.772440),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428699,81.772792),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428780,81.772628),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428697,81.772997),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428551,81.773214),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428273,81.773206),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428386,81.773403),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428059,81.773373),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.427874,81.773573),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.427786,81.774127),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428122,81.774371),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428701,81.773718),
-        map: map,
-        icon: 'images/trash.png',
-    });
-
-
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(25.428703,81.774308),
-        map: map,
-        icon: 'images/trash.png',
-    });
 }
 
 
