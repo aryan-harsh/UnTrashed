@@ -294,20 +294,56 @@ var longit=[
 
 ,81.772047
 ];
+var dist=[];
 var j;
+var index;
+var max=1000000000;
+var index2;
+var max2=1000000000;
 for(j=0;j<36;j++)
 {
-	var marker2 = new google.maps.Marker({
+
+    var distanc = distance(lat,lon, latit[j],longit[j]);
+	//round to 3 decimal places
+
+	dist[j]=Math.round(distanc*1000);  
+
+	if(dist[j]<max)
+	{
+		max=dist[j];
+		index=j;
+	}
+
+	else if(dist[j]<max2 && dist[j]>max)
+	{
+		max2=dist[j];
+		index2=j;
+	}
+
+}
+
+
+
+for(j=0;j<36;j++)
+{
+	if(j==index2 || j==index)
+	{var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(latit[j],longit[j]),
+        map: map,
+        icon: 'images/trash0.png',
+    });
+	}
+	else
+		{var marker2 = new google.maps.Marker({
         position: new google.maps.LatLng(latit[j],longit[j]),
         map: map,
         icon: 'images/trash.png',
     });
-
-    var distanc = distance(lat,lon, latit[j],longit[j]);
-	//round to 3 decimal places
-	console.log(Math.round(distanc*1000));  
+	}
 
 }
+
+document.getElementById("dom").innerHTML = "Nearest Dustbins are located "+max+" m and "+max2+"m away";
 
 
 }
