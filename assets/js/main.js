@@ -12,6 +12,7 @@ var settings = {
 		// Transition delay (in ms)
 			delay: 5000,
 
+
 		// Parallax intensity (between 0 and 1; higher = more intense, lower = less intense; 0 = off)
 			parallax: 0.25
 
@@ -21,48 +22,47 @@ var settings = {
 
 //GET CURRENT LOCATION
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-
-function showPosition(position) {
-  return position.coords.latitude + ","+position.coords.longitude;
-}
-
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.");
-      break;
-    case error.TIMEOUT:
-      alert("The request to get user location timed out.");
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.");
-      break;
-  }
-}
-
-
+let lat=null;
+let lon=null;
 
 /* ==========  START GOOGLE MAP ========== */
 
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
 
-function init() {
+function showPosition(position) {
+
+ 	lat=position.coords.latitude;
+  	lon=position.coords.longitude;
+  	if(lat && lon){
+  	init_map();
+  }
+ 	//alert(lat+" "+lon);
+
+}
+
+function init(){
+	if (navigator.geolocation) {
+    		//console.log(navigator.geolocation);
+  		  navigator.geolocation.getCurrentPosition(showPosition);
+  			}
+  	    else { 
+  		  alert("Geolocation is not supported by this browser.");
+  			}
+
+}
+
+function init_map() {
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 
-	    var myLatLng = new google.maps.LatLng(25.4299, 81.7712);
+    
+    	
 
+  if(lat && lon){
+	    		var myLatLng = new google.maps.LatLng(lat, lon);
+			}
+	   
 	    var mapOptions = {
 	        zoom: 17,
 	        center: myLatLng,
@@ -133,7 +133,7 @@ function init() {
 
     // Let's also add a marker while we're at it
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(25.4299, 81.7712),
+        position: new google.maps.LatLng(25.426338899999998,81.7732228),
         map: map,
 		icon: 'images/map-marker.png',
     });
